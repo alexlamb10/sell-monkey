@@ -6,11 +6,15 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+let { seed } = require("./controller");
+
 app.use(express.json());
 app.use(cors());
 
 // For Heroku
 app.use(express.static(path.resolve(__dirname, "../build")));
+
+app.post("/seed", seed);
 
 // After all Endpoints
 app.get("/*", function (req, res) {
