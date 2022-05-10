@@ -15,8 +15,8 @@ module.exports = {
     sequelize
       .query(
         `
-            drop table if exists items;
             drop table if exists cart_items;
+            drop table if exists items;
 
                 CREATE TABLE items (
                     item_id SERIAL PRIMARY KEY,
@@ -25,7 +25,8 @@ module.exports = {
                     price INT,
                     description TEXT,
                     shipping boolean,
-                    category VARCHAR(255)
+                    category VARCHAR(255),
+                    picture TEXT
                 );
 
                 CREATE TABLE cart_items (
@@ -42,6 +43,21 @@ module.exports = {
       })
       .catch((err) => {
         console.log("Error Seeding DB", err);
+      });
+  },
+  getListings: (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    sequelize
+      .query(
+        `
+      SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+      WHERE user_id = '${id}'
+    `
+      )
+      .then((dbRes) => {
+        console.log("Hit DB");
+        res.status(200).send(dbRes[0]);
       });
   },
 };

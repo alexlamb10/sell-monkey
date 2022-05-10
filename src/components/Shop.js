@@ -1,14 +1,9 @@
-import React from "react";
-import NavBar from "./NavBar";
-import Profile from "./test";
+import React from 'react'
 
 function Shop() {
   return (
-    <div>
-      <NavBar />
-      <Profile />
-    </div>
-  );
+    <div>Shop</div>
+  )
 }
 
-export default Shop;
+export default Shop

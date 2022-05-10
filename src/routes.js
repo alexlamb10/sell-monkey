@@ -1,17 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Login from "./components/Login";
-import CreateListing from "./components/CreateListing";
-import Shop from "./components/Shop";
+import Listings from "./components/Listings";
+import Shop from "./components/Home";
 import Cart from "./components/Cart";
 
 export default (
-        <Router>
-            <Routes>
-                {/* <Route path='/' element={<Login />} /> */}
-                <Route path='/createListing' element={<CreateListing />} />
-                <Route path='/' element={<Shop />} />
-                <Route path='/cart' element={<Cart />} />
-            </Routes>
-        </Router>
-    
-)
+  <Router>
+    <Routes>
+      {/* <Route path='/' element={<Login />} /> */}
+      <Route path="/listings" element={<Listings />} />
+      <Route path="/" element={<Shop />} />
+      <Route path="/cart" element={<Cart />} />
+    </Routes>
+  </Router>
+);
