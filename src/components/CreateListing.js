@@ -1,8 +1,11 @@
 import React from 'react'
+import NavBar from './NavBar'
 
 function CreateListing() {
   return (
-    <div>CreateListing</div>
+    <div>
+      <NavBar />
+    </div>
   )
 }
 
