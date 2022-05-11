@@ -60,4 +60,33 @@ module.exports = {
         res.status(200).send(dbRes[0]);
       });
   },
+  getAllListings: (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    sequelize
+      .query(
+        `
+      SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+    `
+      )
+      .then((dbRes) => {
+        console.log("Hit DB");
+        res.status(200).send(dbRes[0]);
+      });
+  },
+  getFilteredListings: (req, res) => {
+    let { cat } = req.params;
+    console.log(cat);
+    sequelize
+      .query(
+        `
+      SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+      WHERE category = '${cat}'
+    `
+      )
+      .then((dbRes) => {
+        console.log("Hit DB Get Filtered listings ");
+        res.status(200).send(dbRes[0]);
+      });
+  },
 };
