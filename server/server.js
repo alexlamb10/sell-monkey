@@ -11,6 +11,7 @@ let {
   getListings,
   getAllListings,
   getFilteredListings,
+  addToCart,
 } = require("./controller");
 
 app.use(express.json());
@@ -25,7 +26,9 @@ app.get("/getListings/:id", getListings);
 
 app.get("/getListings", getAllListings);
 
-app.get('/getFilteredListings/:cat', getFilteredListings)
+app.get("/getFilteredListings/:cat", getFilteredListings);
+
+app.post("/addToCart", addToCart);
 
 // After all Endpoints
 // app.get("/*", function (req, res) {

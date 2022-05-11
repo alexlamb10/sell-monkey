@@ -3,49 +3,6 @@
   padding: 0;
 }
 
-.start-up{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
-  background-color: rgba(23, 182, 251, .2);
-}
-
-.hide{
-  display: none;
-}
-
-.login-page{
-  display: flex;
-  flex-direction: column;
-  background-color: #1D2358;
-  width: 40%;
-  height: 50%;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 2px 3px 10px #1D2358;
-}
-
-.login-box{
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  
-}
-.create{
-  padding-bottom: 3%;
-  color: white;
-  cursor: pointer;
-}
-
-.welcome{
-  color: white;
-}
-
 .btn{
   background-color: #17B6FB;
   border: none;
@@ -61,7 +18,7 @@
 
 .header, .footer {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   justify-content: space-between;
   align-items: center;
   height: 10vh;
@@ -99,7 +56,7 @@
 }
 
 .landing-page{
-  width: 100%;
+  max-width: 100%;
   background-image: url(./landing-page.jpg);
   background-size:cover;
   background-position: center;
@@ -111,8 +68,8 @@
 }
 
 .landing-page-company{
-  width: 30%;
-  height: 40%;
+  max-width: 30%;
+  max-height: 40%;
   margin-right: 5%;
   display: flex;
   flex-direction: column;
@@ -122,9 +79,9 @@
 }
 
 .landing-page-info{
-  width: 40%;
+  max-width: 40%;
   text-align: center;
-  height: 20rem;
+  height: 20vh;
   margin-top: 10%;
   display: flex;
   flex-direction: column;

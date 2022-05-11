@@ -31,9 +31,7 @@ module.exports = {
 
                 CREATE TABLE cart_items (
                     user_id VARCHAR(50),
-                    item_id INT REFERENCES items(item_id),
-                    cart_total FLOAT,
-                    number_of_items INT
+                    item_id INT REFERENCES items(item_id)
                 );
         `
       )
@@ -46,6 +44,7 @@ module.exports = {
       });
   },
   getListings: (req, res) => {
+    // Get listings based off id from params
     let { id } = req.params;
     console.log(id);
     sequelize
@@ -61,6 +60,7 @@ module.exports = {
       });
   },
   getAllListings: (req, res) => {
+    // Get all listings from database
     let { id } = req.params;
     console.log(id);
     sequelize
@@ -75,6 +75,7 @@ module.exports = {
       });
   },
   getFilteredListings: (req, res) => {
+    // Get listings based off category from params
     let { cat } = req.params;
     console.log(cat);
     sequelize
@@ -87,6 +88,22 @@ module.exports = {
       .then((dbRes) => {
         console.log("Hit DB Get Filtered listings ");
         res.status(200).send(dbRes[0]);
+      });
+  },
+  addToCart: (req, res) => {
+    let item_id = req.body.item;
+    let user_id = req.body.id;
+
+    // Insert new cart item into the database
+    sequelize
+      .query(
+        `
+      INSERT INTO cart_items (user_id, item_id)
+        VALUES (${user_id}, ${item_id})
+    `
+      )
+      .then((dbRes) => {
+        res.status(200).send("Item Added to Cart!");
       });
   },
 };

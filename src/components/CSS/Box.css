@@ -1,5 +1,6 @@
 .listing{
-    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
     height: 30vh;
     display: flex;
     justify-content: space-around;
@@ -24,17 +25,32 @@
     align-items: center;
 }
 
+.all-listings-page{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .all-listings{
-    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
+
+}
+
+.filter{
+    margin-left: 2%;
+    margin-top: 2%;
+    max-width: 15%;
+    display: flex;
     justify-content: space-around;
 }
 
 .single-listing-home{
     width: 30%;
-    min-height: 30vh;
+    min-height: 35vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,9 +66,16 @@
     color: #17B6FB;
 }
 
+.add-cart-btn{
+    cursor: pointer;
+    width: 40%;
+}
+
+
 .add-cart-div{
     display: flex;
-    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
     justify-content: space-around;
     align-items: center;
 }
