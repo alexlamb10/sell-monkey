@@ -12,6 +12,10 @@ let {
   getAllListings,
   getFilteredListings,
   addToCart,
+  getItemIds,
+  getCartItem,
+  deleteListing,
+  deleteCartItem,
 } = require("./controller");
 
 app.use(express.json());
@@ -24,11 +28,19 @@ app.post("/seed", seed);
 
 app.get("/getListings/:id", getListings);
 
-app.get("/getListings", getAllListings);
+app.get("/listings", getAllListings);
 
 app.get("/getFilteredListings/:cat", getFilteredListings);
 
 app.post("/addToCart", addToCart);
+
+app.get("/getIds/:id", getItemIds);
+
+app.get("/getCartItem/:id", getCartItem);
+
+app.delete('/deleteListing/:id', deleteListing)
+
+app.delete('/deleteCartItem/:id', deleteCartItem)
 
 // After all Endpoints
 // app.get("/*", function (req, res) {

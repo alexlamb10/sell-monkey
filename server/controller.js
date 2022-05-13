@@ -51,7 +51,7 @@ module.exports = {
       .query(
         `
       SELECT item_id, product_name, price, description, shipping, category, picture FROM items
-      WHERE user_id = '${id}'
+      WHERE user_id = '${id}';
     `
       )
       .then((dbRes) => {
@@ -66,7 +66,7 @@ module.exports = {
     sequelize
       .query(
         `
-      SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+      SELECT item_id, product_name, price, description, shipping, category, picture FROM items;
     `
       )
       .then((dbRes) => {
@@ -82,7 +82,7 @@ module.exports = {
       .query(
         `
       SELECT item_id, product_name, price, description, shipping, category, picture FROM items
-      WHERE category = '${cat}'
+      WHERE category = '${cat}';
     `
       )
       .then((dbRes) => {
@@ -99,11 +99,70 @@ module.exports = {
       .query(
         `
       INSERT INTO cart_items (user_id, item_id)
-        VALUES (${user_id}, ${item_id})
+        VALUES (${user_id}, ${item_id});
     `
       )
       .then((dbRes) => {
         res.status(200).send("Item Added to Cart!");
       });
   },
+  getItemIds: (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+
+    sequelize
+      .query(
+        `
+      SELECT item_id FROM cart_items
+      WHERE user_id = '${id}';
+    `
+      )
+      .then((dbRes) => {
+        console.log(dbRes[0]);
+        res.status(200).send(dbRes[0]);
+      });
+  },
+  getCartItem: (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    sequelize
+      .query(
+        `
+      SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+      WHERE item_id = ${id};
+    `
+      )
+      .then((dbRes) => {
+        res.status(200).send(dbRes[0]);
+      });
+  },
+  deleteListing: (req, res) => {
+    let { id } = req.params;
+    sequelize
+      .query(
+        `
+      DELETE FROM cart_items
+      WHERE item_id = ${id};
+      
+      DELETE FROM items
+      WHERE item_id = ${id};
+    `
+      )
+      .then((dbRes) => {
+        res.status(200).send("Item Deleted");
+      });
+  },
+  deleteCartItem: (req, res) => {
+    let { id } = req.params;
+    sequelize
+      .query(
+        `
+      DELETE FROM cart_items
+      WHERE item_id = ${id};
+    `
+      )
+      .then((dbRes) => {
+        res.status(200).send("Item deleted from your cart!");
+      });
+  }
 };

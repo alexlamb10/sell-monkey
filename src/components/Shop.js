@@ -15,7 +15,7 @@ function Shop() {
     // If the category is empty return all the listings
     if (cat === "") {
       axios
-        .get(`/getListings`)
+        .get(`/listings`)
         .then((res) => {
           setListings(res.data);
         })
