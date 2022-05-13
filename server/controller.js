@@ -22,9 +22,9 @@ module.exports = {
                     item_id SERIAL PRIMARY KEY,
                     user_id VARCHAR(50),
                     product_name VARCHAR(255),
-                    price INT,
+                    price FLOAT,
                     description TEXT,
-                    shipping boolean,
+                    shipping VARCHAR(50),
                     category VARCHAR(255),
                     picture TEXT
                 );
@@ -164,5 +164,19 @@ module.exports = {
       .then((dbRes) => {
         res.status(200).send("Item deleted from your cart!");
       });
-  }
+  },
+  addUsersListing: (req, res) => {
+    const { id, name, description, price, shipping, category, data } = req.body;
+
+    sequelize
+      .query(
+        `
+      INSERT INTO items (user_id, product_name, price, description, shipping, category, picture)
+        VALUES ('${id}', '${name}', ${price}, '${description}', '${shipping}', '${category}', '${data}')
+    `
+      )
+      .then((dbRes) => {
+        res.status(200).send("Item listed for sale!");
+      });
+  },
 };

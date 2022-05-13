@@ -18,7 +18,7 @@
 
     &__content{
         width: 50%;
-        margin: 15% auto;
+        margin: 5% auto;
         background-color: #fff;
         border-radius: 5px;
         position: relative;
@@ -38,6 +38,15 @@
     &__body,
     &__footer{
         padding: 3% 5%;        
+    }
+
+    &__body > form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__body > form > input {
+        width: 20%;
     }
 
     &__close {

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import AddListing from "./button/AddListing";
-import Modal from "./modal/Modal";
-import { ModalHeader, ModalFooter, ModalBody } from "./modal/Modal";
+import CompleteModal from "./CompleteModal";
 import "./CSS/Box.css";
 
 function Box({ userId }) {
@@ -43,49 +41,19 @@ function Box({ userId }) {
     return (
       <div>
         <h3>No Active Listings</h3>
-        <AddListing onClick={() => setShowModal(true)}>
-          Add Item for sale
-        </AddListing>
-        <Modal setShow={setShowModal} show={showModal}>
-          <ModalHeader>
-            <h2>Modal Header</h2>
-          </ModalHeader>
-          <ModalBody style={{ textAlign: "justify" }}>
-            This is some filler text
-          </ModalBody>
-          <ModalFooter>
-            <AddListing onClick={() => setShowModal(false)}>
-              Add Item
-            </AddListing>
-          </ModalFooter>
-        </Modal>
+        <CompleteModal setShowModal={setShowModal} showModal={showModal} />
       </div>
     );
   } else {
     return (
       <div className="box-div">
         <h1 className="box-h1">Your Listings</h1>
-        <AddListing onClick={() => setShowModal(true)}>
-          Add Item for sale
-        </AddListing>
-        <Modal setShow={setShowModal} show={showModal}>
-          <ModalHeader>
-            <h2>Modal Header</h2>
-          </ModalHeader>
-          <ModalBody style={{ textAlign: "justify" }}>
-            This is some filler text
-          </ModalBody>
-          <ModalFooter>
-            <AddListing onClick={() => setShowModal(false)}>
-              Add Item
-            </AddListing>
-          </ModalFooter>
-        </Modal>
+        <CompleteModal setShowModal={setShowModal} showModal={showModal} />
         {listings.map((item) => {
           return (
             <div key={item.item_id} className="listing">
               <div className="box-item-div">
-                <img src={item.picture} alt="item" />
+                <img src={item.picture} alt="item" className="box-item-pic"/>
                 <h3>{item.product_name}</h3>
               </div>
               <div className="box-info-div">

@@ -60,11 +60,11 @@ function Shop() {
       <div className="filter">
         {/* On Select tag change hold category on state */}
         <select onChange={(e) => setTempCat(e.target.value)}>
-          <option value="Select">Select</option>
-          <option value="automobiles">Automobile</option>
-          <option value="electronics">Electronics</option>
-          <option value="home-decor">Home Decor</option>
-          <option value="other">Other</option>
+          <option value="select">Select</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Sporting Goods">Sporting Goods</option>
+          <option value="Home Decor">Home Decor</option>
+          <option value="Other">Other</option>
         </select>
         <button onClick={filterItems}>Submit</button>
       </div>
@@ -73,7 +73,7 @@ function Shop() {
         {listings.map((item) => {
           return (
             <div key={item.item_id} className="single-listing-home">
-              <img src={item.picture} alt="item" />
+              <img src={item.picture} alt="item" className="item-pic" />
               <h3>{item.product_name}</h3>
               <p>Description: {item.description}</p>
               <p>Shipping: {item.shipping}</p>

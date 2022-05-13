@@ -19,6 +19,7 @@
 
 .box-item-div, .box-info-div{
     height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -60,6 +61,14 @@
     border-radius: 5px;
     color: white;
     margin: 2.5% 0;
+}
+
+.item-pic {
+    max-width: 90%;
+}
+
+.box-item-pic {
+    max-width: 100%;
 }
 
 .add-cart{
