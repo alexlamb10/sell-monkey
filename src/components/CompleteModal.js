@@ -61,7 +61,14 @@ function CompleteModal({ setShowModal, showModal }) {
           console.log(err);
         });
     }
+    setCategory("Select");
+    setShipping("Select");
+    setName("");
+    setDescription("");
+    setPrice(0);
+
     setShowModal(false);
+    // window.location.href = "/listings";
   }
 
   return (

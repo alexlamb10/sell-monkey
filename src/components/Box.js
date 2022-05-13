@@ -18,7 +18,7 @@ function Box({ userId }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [userId]);
+  }, [userId, showModal]);
 
   async function deleteListing(e) {
     //Delete the item that is clicked
@@ -53,7 +53,7 @@ function Box({ userId }) {
           return (
             <div key={item.item_id} className="listing">
               <div className="box-item-div">
-                <img src={item.picture} alt="item" className="box-item-pic"/>
+                <img src={item.picture} alt="item" className="box-item-pic" />
                 <h3>{item.product_name}</h3>
               </div>
               <div className="box-info-div">
