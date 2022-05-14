@@ -30,6 +30,7 @@ function Cart() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function deleteCartItem(e) {
@@ -46,6 +47,7 @@ function Cart() {
 
   if (!isAuthenticated) {
     window.location.href = "/";
+    console.log("test")
   } else {
     return (
       <div>

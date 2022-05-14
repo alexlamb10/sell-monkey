@@ -41,7 +41,7 @@ app.post("/api/s3", (req, res) => {
   const photo = req.body;
 
   const buf = new Buffer(
-    photo.file.replace(/^data:image\/\w+;base64,/, ""),
+    photo.file?.replace(/^data:image\/\w+;base64,/, ""),
     "base64"
   );
 
@@ -67,7 +67,7 @@ app.post("/api/s3", (req, res) => {
   });
 });
 
-app.post("/addNewListing", addUsersListing)
+app.post("/addNewListing", addUsersListing);
 
 app.post("/seed", seed);
 
@@ -83,9 +83,9 @@ app.get("/getIds/:id", getItemIds);
 
 app.get("/getCartItem/:id", getCartItem);
 
-app.delete('/deleteListing/:id', deleteListing)
+app.delete("/deleteListing/:id", deleteListing);
 
-app.delete('/deleteCartItem/:id', deleteCartItem)
+app.delete("/deleteCartItem/:id", deleteCartItem);
 
 // After all Endpoints
 // app.get("/*", function (req, res) {
