@@ -6,7 +6,7 @@
     justify-content: space-around;
     align-items: center;
     margin: 1.5% 0;
-    border-bottom: 2px solid rgb(10, 20, 108);
+    border-bottom:thin solid rgb(29, 92, 175);
     
 }
 
@@ -56,15 +56,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(10, 20, 108);
-    border: none;
-    border-radius: 5px;
-    color: white;
+    border-left: thin solid rgb(29, 92, 175);
+    border-right: thin solid rgb(29, 92, 175);
     margin: 2.5% 0;
 }
 
-.item-pic {
-    max-width: 90%;
+
+.item-pic{
+    width: 50%;
 }
 
 .box-item-pic {
@@ -88,4 +87,5 @@
     max-width: 50%;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 2%;
 }

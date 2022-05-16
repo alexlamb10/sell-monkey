@@ -61,16 +61,20 @@ function Cart() {
                 return (
                   <div key={item.item_id} className="single-cart-item">
                     <div className="cart-div">
-                      <img src={item.picture} alt="item-pic" />
+                      <img
+                        src={item.picture}
+                        alt="item-pic"
+                        className="cart-pic"
+                      />
                       <p>{item.product_name}</p>
                     </div>
-                    <div className="cart-div">
+                    <div className="cart-description">
                       <p>{item.price}</p>
                       <p>{item.description}</p>
-                      <p>{item.category}</p>
+                      <p>{item.shipping}</p>
                       <button
                         value={item.item_id}
-                        className="btn remove"
+                        className="btn"
                         onClick={deleteCartItem}
                       >
                         Remove

@@ -4,16 +4,12 @@
 }
 
 .btn{
-  background-color: #17B6FB;
+  background-color: #08bbfd;
   border: none;
+  padding: 1% 2%;
   border-radius: 5px;
-  color: #1D2358;
+  color: #000;
   cursor: pointer;
-}
-
-.auth{
-  width: 18%;
-  height: 35%;
 }
 
 .header, .footer {
