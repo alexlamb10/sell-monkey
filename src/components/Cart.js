@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import "./CSS/Cart.css";
+import CheckoutForm from "./CheckoutForm";
 
 function Cart() {
   const { isAuthenticated, user } = useAuth0();
@@ -47,7 +48,7 @@ function Cart() {
 
   if (!isAuthenticated) {
     window.location.href = "/";
-    console.log("test")
+    console.log("test");
   } else {
     return (
       <div>
@@ -83,7 +84,7 @@ function Cart() {
               <p>
                 <strong>Total: </strong> {total}
               </p>
-              <button>Pay Now</button>
+              <CheckoutForm />
             </div>
           </div>
         </div>

@@ -3,13 +3,13 @@ import AuthenticationButton from "./button/authentication-button";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
-import storeLogo from './storeLogo.png'
+import storeLogo2 from '../sellMonkey2.png'
 
 function NavBar() {
   return (
     <div className="header">
       <Link to="/" className="logo-header">
-        <img src={storeLogo} alt="logo" className="nav-logo" />
+        <img src={storeLogo2} alt="logo" className="nav-logo" />
       </Link>
       <div className="links">
         <Link to="/" className="link-tag">

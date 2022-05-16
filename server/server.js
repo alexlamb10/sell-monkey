@@ -18,7 +18,7 @@ const S3 = new AWS.S3();
 
 const app = express();
 
-let {
+const {
   seed,
   getListings,
   getAllListings,
@@ -30,6 +30,8 @@ let {
   deleteCartItem,
   addUsersListing,
 } = require("./controller");
+
+const { createPaymentIntent } = require("./stripeController");
 
 app.use(express.json());
 app.use(cors());
@@ -86,6 +88,8 @@ app.get("/getCartItem/:id", getCartItem);
 app.delete("/deleteListing/:id", deleteListing);
 
 app.delete("/deleteCartItem/:id", deleteCartItem);
+
+app.post("/create-payment-intent", createPaymentIntent);
 
 // After all Endpoints
 // app.get("/*", function (req, res) {
