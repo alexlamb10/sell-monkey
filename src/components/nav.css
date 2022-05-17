@@ -141,17 +141,16 @@ li {
 @media (max-width: 700px){
     .header ul {
             position: fixed;
-                top: 10vh;
-                right: 5%;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-                height: 40vh;
-                width: 100%;
-                position: fixed;
-                left: 0;
-                border-top: thin solid rgb(22, 68, 128);
-            background-color: rgb(29, 92, 175);
+            top: 10vh;
+            right: 5%;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            height: 40vh;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            background-color: rgb(21, 69, 132);
         }
     ul{
         display: flex;

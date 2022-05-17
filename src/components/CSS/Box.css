@@ -58,7 +58,7 @@
     justify-content: space-around;
     border-left: thin solid rgb(29, 92, 175);
     border-right: thin solid rgb(29, 92, 175);
-    margin: 2.5% 0;
+    margin: 2.5% 1;
 }
 
 
@@ -88,4 +88,11 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 2%;
+}
+
+@media screen and (max-width: 700px) {
+    .single-listing-home{
+        width: 80%;
+        margin: 4% 0;
+    }
 }
