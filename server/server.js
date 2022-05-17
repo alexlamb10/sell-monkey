@@ -29,6 +29,8 @@ const {
   deleteListing,
   deleteCartItem,
   addUsersListing,
+  markAsComplete,
+  deletePurchased,
 } = require("./controller");
 
 const { createPaymentIntent } = require("./stripeController");
@@ -90,6 +92,10 @@ app.delete("/deleteListing/:id", deleteListing);
 app.delete("/deleteCartItem/:id", deleteCartItem);
 
 app.post("/create-payment-intent", createPaymentIntent);
+
+app.put('/itemBought/:id', markAsComplete)
+
+app.delete('/deleteBought/:id', deletePurchased)
 
 // After all Endpoints
 // app.get("/*", function (req, res) {

@@ -26,7 +26,8 @@ module.exports = {
                     description TEXT,
                     shipping VARCHAR(50),
                     category VARCHAR(255),
-                    picture TEXT
+                    picture TEXT,
+                    purchased BOOLEAN
                 );
 
                 CREATE TABLE cart_items (
@@ -51,7 +52,7 @@ module.exports = {
       .query(
         `
       SELECT item_id, product_name, price, description, shipping, category, picture FROM items
-      WHERE user_id = '${id}';
+      WHERE user_id = '${id}' AND purchased = false;
     `
       )
       .then((dbRes) => {
@@ -66,7 +67,8 @@ module.exports = {
     sequelize
       .query(
         `
-      SELECT item_id, product_name, price, description, shipping, category, picture FROM items;
+      SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+      WHERE purchased = false;
     `
       )
       .then((dbRes) => {
@@ -77,18 +79,32 @@ module.exports = {
   getFilteredListings: (req, res) => {
     // Get listings based off category from params
     let { cat } = req.params;
-    console.log(cat);
-    sequelize
-      .query(
-        `
+    if (cat === "" || cat === "select") {
+      sequelize
+        .query(
+          `
       SELECT item_id, product_name, price, description, shipping, category, picture FROM items
-      WHERE category = '${cat}';
+      WHERE purchased = false;
+      
     `
-      )
-      .then((dbRes) => {
-        console.log("Hit DB Get Filtered listings ");
-        res.status(200).send(dbRes[0]);
-      });
+        )
+        .then((dbRes) => {
+          console.log("Hit DB Get Filtered listings ");
+          res.status(200).send(dbRes[0]);
+        });
+    } else {
+      sequelize
+        .query(
+          `
+        SELECT item_id, product_name, price, description, shipping, category, picture FROM items
+        WHERE category = '${cat}' AND purchased = false;
+      `
+        )
+        .then((dbRes) => {
+          console.log("Hit DB Get Filtered listings ");
+          res.status(200).send(dbRes[0]);
+        });
+    }
   },
   addToCart: (req, res) => {
     let item_id = req.body.item;
@@ -99,7 +115,7 @@ module.exports = {
       .query(
         `
       INSERT INTO cart_items (user_id, item_id)
-        VALUES (${user_id}, ${item_id});
+        VALUES ('${user_id}', ${item_id});
     `
       )
       .then((dbRes) => {
@@ -171,12 +187,28 @@ module.exports = {
     sequelize
       .query(
         `
-      INSERT INTO items (user_id, product_name, price, description, shipping, category, picture)
-        VALUES ('${id}', '${name}', ${price}, '${description}', '${shipping}', '${category}', '${data}')
+      INSERT INTO items (user_id, product_name, price, description, shipping, category, picture, purchased)
+        VALUES ('${id}', '${name}', ${price}, '${description}', '${shipping}', '${category}', '${data}', false)
     `
       )
       .then((dbRes) => {
         res.status(200).send("Item listed for sale!");
       });
+  },
+  markAsComplete: (req, res) => {
+    const { id } = req.params;
+    sequelize.query(`
+      UPDATE items
+      SET purchased = true
+      WHERE item_id = ${id};
+    `);
+  },
+  deletePurchased: (req, res) => {
+    const { id } = req.params;
+
+    sequelize.query(`
+      DELETE FROM cart_items
+      WHERE item_id = ${id}
+    `);
   },
 };

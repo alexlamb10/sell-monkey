@@ -14,6 +14,7 @@ import CompletePayModal from "./CompletePayModal";
 function Cart() {
   const { isAuthenticated, user } = useAuth0();
   const [price, setPrice] = useState([]);
+  const [ids, setIds] = useState([])
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   let id = user?.sub?.split("|")[1];
@@ -23,6 +24,7 @@ function Cart() {
   async function fetchData() {
     // Get ids for all the items in the cart_items table
     const res = await axios.get(`/getIds/${id}`);
+    setIds(res.data)
 
     // Get the item info from ids received above
     for (let i = 0; i < res.data.length; i++) {
@@ -99,6 +101,7 @@ function Cart() {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 total={total}
+                ids={ids}
               />
             </div>
           </div>
