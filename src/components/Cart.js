@@ -37,7 +37,7 @@ function Cart() {
 
   useEffect(() => {
     fetchData();
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -95,9 +95,11 @@ function Cart() {
               <p>
                 <strong>Total: </strong> {total}
               </p>
-              <CompletePayModal showModal={showModal} setShowModal={setShowModal} />
-
-              {/* <CheckoutForm /> */}
+              <CompletePayModal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                total={total}
+              />
             </div>
           </div>
         </div>
