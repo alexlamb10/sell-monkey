@@ -20,7 +20,7 @@ function LandingPage() {
           without a subscription.
         </p>
         <button className="btn main-auth" onClick={() => loginWithRedirect()}>
-          Log In to begin your experience!
+          Begin your experience!
         </button>
       </div>
     </div>
