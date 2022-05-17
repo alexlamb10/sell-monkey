@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
 import storeLogo2 from '../sellMonkey2.png'
+import './nav.css'
 
 function NavBar() {
   return (
     <div className="header">
-      <Link to="/" className="logo-header">
+      {/* <Link to="/" className="logo-header">
         <img src={storeLogo2} alt="logo" className="nav-logo" />
       </Link>
       <div className="links">
@@ -23,7 +24,34 @@ function NavBar() {
         </Link>
 
         <AuthenticationButton />
-      </div>
+      </div> */}
+      <Link to="/" className="logo-header">
+        <img src={storeLogo2} alt="logo" className="nav-logo" />
+      </Link>
+      <input className="menu-btn" type="checkbox" id="menu-btn" />
+      <label className="menu-icon" htmlFor="menu-btn">
+        <span className="navicon"></span>
+      </label>
+      <ul className="menu">
+        <li>
+          <Link to="/" className="link-tag">
+            <h4>Home</h4>
+          </Link>
+        </li>
+        <li>
+          <Link to="/listings" className="link-tag">
+            <h4>Your Listings</h4>
+          </Link>
+        </li>
+        <li>
+          <Link to="/cart" className="link-tag">
+            <FontAwesomeIcon icon={faCartShopping} />
+          </Link>
+        </li>
+        <li>
+          <AuthenticationButton />
+        </li>
+      </ul>
     </div>
   );
 }

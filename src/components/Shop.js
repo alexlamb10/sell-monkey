@@ -73,6 +73,7 @@ function Shop() {
         {listings.map((item) => {
           return (
             <div key={item.item_id} className="single-listing-home">
+              
               <img src={item.picture} alt="item" className="item-pic" />
               <h3>{item.product_name}</h3>
               <p>Description: {item.description}</p>

@@ -5,11 +5,17 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import "./CSS/Cart.css";
 import CheckoutForm from "./CheckoutForm";
+import "./modal/modal.scss";
+import PayButton from "./button/PayButton";
+import PayModal from "./modal/PayModal";
+import { PayModalBody, PayModalHeader, PayModalFooter } from "./modal/PayModal";
+import CompletePayModal from "./CompletePayModal";
 
 function Cart() {
   const { isAuthenticated, user } = useAuth0();
   const [price, setPrice] = useState([]);
   const [items, setItems] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   let id = user?.sub?.split("|")[1];
 
   let arr = [];
@@ -31,6 +37,7 @@ function Cart() {
 
   useEffect(() => {
     fetchData();
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -61,16 +68,20 @@ function Cart() {
                 return (
                   <div key={item.item_id} className="single-cart-item">
                     <div className="cart-div">
-                      <img src={item.picture} alt="item-pic" />
+                      <img
+                        src={item.picture}
+                        alt="item-pic"
+                        className="cart-pic"
+                      />
                       <p>{item.product_name}</p>
                     </div>
-                    <div className="cart-div">
+                    <div className="cart-description">
                       <p>{item.price}</p>
                       <p>{item.description}</p>
-                      <p>{item.category}</p>
+                      <p>{item.shipping}</p>
                       <button
                         value={item.item_id}
-                        className="btn remove"
+                        className="btn"
                         onClick={deleteCartItem}
                       >
                         Remove
@@ -84,7 +95,9 @@ function Cart() {
               <p>
                 <strong>Total: </strong> {total}
               </p>
-              <CheckoutForm />
+              <CompletePayModal showModal={showModal} setShowModal={setShowModal} />
+
+              {/* <CheckoutForm /> */}
             </div>
           </div>
         </div>

@@ -61,8 +61,8 @@ function Box({ userId }) {
                 <p>{item.description}</p>
                 <p>{item.shipping}</p>
                 <p>{item.category}</p>
-                <button value={item.item_id} onClick={deleteListing}>
-                  Delete Listing
+                <button className="btn" value={item.item_id} onClick={deleteListing}>
+                  Delete
                 </button>
               </div>
             </div>
