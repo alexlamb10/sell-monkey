@@ -3,9 +3,10 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import Box from "./Box";
 import { useAuth0 } from "@auth0/auth0-react";
+import IsLoading from "./IsLoading";
 
 function Listings() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const [userId, setId] = useState("");
 
   useEffect(() => {
@@ -13,6 +14,10 @@ function Listings() {
 
     setId(id);
   }, [user?.sub, userId]);
+
+  if (isLoading) {
+    return <IsLoading />;
+  }
 
   if (!isAuthenticated) {
     window.location.href = "/";

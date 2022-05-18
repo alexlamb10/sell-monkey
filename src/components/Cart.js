@@ -4,15 +4,11 @@ import Footer from "./Footer";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import "./CSS/Cart.css";
-import CheckoutForm from "./CheckoutForm";
-import "./modal/modal.scss";
-import PayButton from "./button/PayButton";
-import PayModal from "./modal/PayModal";
-import { PayModalBody, PayModalHeader, PayModalFooter } from "./modal/PayModal";
+import IsLoading from "./IsLoading";
 import CompletePayModal from "./CompletePayModal";
 
 function Cart() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const [price, setPrice] = useState([]);
   const [ids, setIds] = useState([])
   const [items, setItems] = useState([]);
@@ -55,6 +51,10 @@ function Cart() {
     return a + b;
   }, 0);
 
+  if (isLoading) {
+    return <IsLoading />;
+  }
+
   if (!isAuthenticated) {
     window.location.href = "/";
     console.log("test");
@@ -95,7 +95,7 @@ function Cart() {
             </div>
             <div className="payment">
               <p>
-                <strong>Total: </strong> {total}
+                <strong>Total: </strong> ${total}
               </p>
               <CompletePayModal
                 showModal={showModal}

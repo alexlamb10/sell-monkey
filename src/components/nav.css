@@ -137,7 +137,7 @@ h4, .icon, .authBtn {
     }
 
     .header li a {
-        padding: 20px 30px;
+        padding: 10px 30px;
     }
 
     .header .menu {
@@ -176,12 +176,20 @@ h4, .icon, .authBtn {
         justify-content: space-between;
         align-items: center;
     }
-
-        h4,
-        .icon,
-        .authBtn {
-            font-size: 1.5vw;
-            width: 7vw;
-            text-align: center;
-        }
+    .header a{
+        width: 75%;
+    }
+    
+    
+    h4,
+    .icon
+    {
+        font-size: 2.5vw;
+        text-align: center;
+    }
+    .authBtn{
+        margin-left: 10%;
+        font-size: 4vw;
+        text-align: center;
+    }
 }
