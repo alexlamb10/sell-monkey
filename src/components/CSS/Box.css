@@ -1,3 +1,8 @@
+h1 {
+    font-size: 4vh;
+    margin-bottom: 3%;
+}
+
 .listing{
     min-width: 50%;
     max-width: 50%;
@@ -16,6 +21,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 
 .box-item-div, .box-info-div{
     height: 100%;
@@ -50,6 +56,7 @@
 }
 
 .single-listing-home{
+    min-width: 25%;
     width: 30%;
     min-height: 35vh;
     display: flex;
@@ -58,7 +65,19 @@
     justify-content: space-around;
     border-left: thin solid rgb(29, 92, 175);
     border-right: thin solid rgb(29, 92, 175);
-    margin: 2.5% 1;
+    margin: 2.5% 1%;
+}
+
+.single-listing-home p {
+    font-size: 1vw;
+}
+
+.single-listing-home h3 {
+    font-size: 2vw;
+}
+
+.single-listing-home button {
+    font-size: 1vw;
 }
 
 
@@ -95,4 +114,25 @@
         width: 80%;
         margin: 4% 0;
     }
+
+    .single-listing-home p {
+        font-size: 3vw;
+    }
+
+    .single-listing-home h3 {
+        font-size: 4vw;
+    }
+
+    .single-listing-home button {
+        font-size: 2vw;
+    }
+    .listing {
+        min-width: 90%;
+    }
+
+    h1{
+        font-size: 3vh;
+        margin-bottom: 5%;
+    }
+    
 }
