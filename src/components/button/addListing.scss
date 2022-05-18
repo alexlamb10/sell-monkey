@@ -11,6 +11,16 @@
     top: 15vh;
     margin-left: 3%;
 }
+.pay-modal-btn {
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 1.5rem;
+    background-color: #08bbfd;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    margin-left: 3%;
+}
 
 @media (max-width: 700px) {
     .modal-btn {

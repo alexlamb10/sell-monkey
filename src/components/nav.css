@@ -22,6 +22,19 @@ li {
     width: 25%;
 }
 
+h4, .icon, .authBtn {
+    font-size: 1vw;
+    width: 7vw;
+    text-align: center;
+}
+
+.header li div {
+    width: 90%;
+    text-align: center;
+}
+
+
+
 
 
 .header li a {
@@ -164,5 +177,11 @@ li {
         align-items: center;
     }
 
-    
+        h4,
+        .icon,
+        .authBtn {
+            font-size: 1.5vw;
+            width: 7vw;
+            text-align: center;
+        }
 }

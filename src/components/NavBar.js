@@ -2,9 +2,9 @@ import React from "react";
 import AuthenticationButton from "./button/authentication-button";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
-import storeLogo2 from '../sellMonkey2.png'
-import './nav.css'
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import storeLogo2 from "../sellMonkey2.png";
+import "./nav.css";
 
 function NavBar() {
   return (
@@ -45,11 +45,13 @@ function NavBar() {
         </li>
         <li>
           <Link to="/cart" className="link-tag">
-            <FontAwesomeIcon icon={faCartShopping} />
+            <FontAwesomeIcon className="icon" icon={faCartShopping} />
           </Link>
         </li>
         <li>
-          <AuthenticationButton />
+          <div className="authBtn">
+            <AuthenticationButton />
+          </div>
         </li>
       </ul>
     </div>

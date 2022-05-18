@@ -6,6 +6,7 @@
 .btn{
   background-color: #08bbfd;
   border: none;
+  font-size: 1vw;
   padding: 1% 2%;
   border-radius: 5px;
   color: #000;
@@ -138,5 +139,21 @@
     color: #08bbfd;
   }
 
+  .btn {
+    font-size: 1.5vw;
 
+  }
+
+  a{
+    text-align: center;
+  }
+
+  a h4 {
+    width: 100%;
+    text-align: center;
+  }
+
+  li button{
+    margin-left: 10%;
+  }
 }

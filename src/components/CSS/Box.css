@@ -40,6 +40,7 @@ h1 {
 
 .all-listings{
     max-width: 100%;
+    margin-top: 3%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -48,11 +49,19 @@ h1 {
 }
 
 .filter{
-    margin-left: 2%;
-    margin-top: 2%;
-    max-width: 15%;
+    position: absolute;
+    left: 5%;
+    top: 12vh;
+    max-width: 15vw;
     display: flex;
     justify-content: space-around;
+}
+
+.filter select {
+    min-width: 50%;
+}
+.filter button {
+    font-size: 1.1vw;
 }
 
 .single-listing-home{
@@ -130,9 +139,27 @@ h1 {
         min-width: 90%;
     }
 
+    .all-listings {
+        margin-top: 5%;
+    }
+
     h1{
         font-size: 3vh;
         margin-bottom: 5%;
     }
-    
+
+    .filter{
+        left: 5%;
+    }
+
+    .filter select {
+        min-width: 70%;
+    }
+
+    .filter button {
+        font-size: 2vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
 }

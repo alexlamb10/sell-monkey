@@ -2,7 +2,7 @@ import './payButton.scss'
 
 function PayButton(props) {
   return (
-    <button className="modal-btn" onClick={props.onClick}>
+    <button className="pay-modal-btn" onClick={props.onClick}>
       {props.children}
     </button>
   );
