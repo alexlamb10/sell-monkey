@@ -23,6 +23,12 @@
   background-color: rgb(29, 92, 175);
 }
 
+.load{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .footer {
   justify-content: center;
   flex-direction: column;
@@ -140,8 +146,12 @@
   }
 
   .btn {
-    font-size: 1.5vw;
+    font-size: 3vw;
 
+  }
+
+  p{
+    font-size: 3vw;
   }
 
   a{

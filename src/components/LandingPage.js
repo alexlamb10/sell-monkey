@@ -1,10 +1,15 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import storeLogo from './storeLogo.png'
+import IsLoading from "./IsLoading";
 
 
 function LandingPage() {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <IsLoading />;
+  }
 
   return (
     <div className="landing-page pages">

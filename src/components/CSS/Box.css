@@ -154,12 +154,13 @@ h1 {
 
     .filter select {
         min-width: 70%;
+        font-size: 2vw;
     }
 
     .filter button {
         font-size: 2vw;
-        padding-left: 2vw;
-        padding-right: 2vw;
+        padding-left: 1.5vw;
+        padding-right: 1.5vw;
     }
 
 }
