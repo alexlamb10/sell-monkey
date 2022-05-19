@@ -63,11 +63,11 @@ function CompleteModal({ setShowModal, showModal }) {
     }
 
     setShowModal(false);
-    // window.location.href = "/listings";
+    window.location.href = "/";
   }
 
   return (
-    <div>
+    <div className="list">
       <AddListing onClick={() => setShowModal(true)}>
         Add Item for sale
       </AddListing>
@@ -76,37 +76,45 @@ function CompleteModal({ setShowModal, showModal }) {
           <h2>Add an Item you'd like to sale.</h2>
         </ModalHeader>
         <ModalBody style={{ textAlign: "justify" }}>
-          <form>
+          <form className="form">
             <label>
               {" "}
-              Name of Item:
+              Name of Item: {" "}
               <input
+                required
                 type="text"
-                placeholder="item name"
+                className="text"
+                placeholder="Item Name"
                 onChange={(e) => setName(e.target.value)}
               />
             </label>
             <label>
               {" "}
-              Description:
+              Description: {" "}
               <input
+                required
                 type="text"
+                className="text"
                 placeholder="Description"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </label>
             <label>
               {" "}
-              Price:
+              Price: {" "}
               <input
+                required
                 type="number"
+                className="text"
                 placeholder="Price"
                 onChange={(e) => setPrice(+e.target.value)}
               />
             </label>
             <label>
               Is shipping Available?{" "}
-              <select onChange={(e) => setShipping(e.target.value)}>
+              <select onChange={(e) => setShipping(e.target.value)}
+              className="drop-down"
+              required>
                 <option value="Select">Select</option>
                 <option value="Shipping Unavailable">
                   Shipping unavailable.
@@ -118,7 +126,9 @@ function CompleteModal({ setShowModal, showModal }) {
             </label>
             <label>
               Item Category:{" "}
-              <select onChange={(e) => setCategory(e.target.value)}>
+              <select onChange={(e) => setCategory(e.target.value)}
+              className="drop-down"
+              required>
                 <option value="select">Select</option>
                 <option value="Electronics">Electronics</option>
                 <option value="Sporting Goods">Sporting Goods</option>
@@ -127,12 +137,15 @@ function CompleteModal({ setShowModal, showModal }) {
               </select>
             </label>
             <label>
-              Picture: <input type="file" onChange={handlePhoto} />
+              Picture: <input type="file" onChange={handlePhoto} className="img-input"
+              required/>
             </label>
           </form>
         </ModalBody>
         <ModalFooter>
-          <AddListing onClick={AddItem}>Add Item</AddListing>
+          <button className="btn" onClick={AddItem}>
+            Add Item
+          </button>
         </ModalFooter>
       </Modal>
     </div>

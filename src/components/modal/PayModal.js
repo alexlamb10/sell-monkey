@@ -18,7 +18,7 @@ function PayModal(props) {
     }, [props]);
   return (
     <div ref={modalRef} className={`modal ${props.show ? "active" : ""}`}>
-      <div className="modal__content">
+      <div className="modal__content pay">
         {!props.hideCloseButton && (
           <span onClick={() => props.setShow(false)} className="modal__close">
             &times;

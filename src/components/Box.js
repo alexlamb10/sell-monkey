@@ -39,7 +39,7 @@ function Box({ userId }) {
 
   if (listings.length === 0) {
     return (
-      <div>
+      <div className="box-div">
         <h3>No Active Listings</h3>
         <CompleteModal setShowModal={setShowModal} showModal={showModal} />
       </div>

@@ -77,7 +77,7 @@ function Shop() {
               <img src={item.picture} alt="item" className="item-pic" />
               <h3>{item.product_name}</h3>
               <p>Description: {item.description}</p>
-              <p>Shipping: {item.shipping}</p>
+              <p>{item.shipping}</p>
               <div className="add-cart-div">
                 <p>${item.price}</p>
                 <button

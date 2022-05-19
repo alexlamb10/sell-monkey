@@ -40,6 +40,34 @@
         padding: 3% 5%;        
     }
 
+    &__body{
+        height: 30vh;
+    }
+
+    .form {
+        height: 100%;
+        width: 100%;
+        word-spacing: .25vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .text{
+        border: none;
+        border-bottom: 1px solid rgb(29, 92, 175);
+        
+    }
+
+    .drop-down{
+        border: 1.5px solid rgb(29, 92, 175);
+        color: rgb(29, 92, 175);
+    }
+
+    .img-input {
+        color: rgb(29, 92, 175);
+    }
+
     &__body > form{
         display: flex;
         flex-direction: column;
@@ -62,4 +90,41 @@
         }
     }
 
+        .pay {
+            height: 30vh;
+        }
+    
+        .pay &__body {
+            height: 5vh;
+        }
+
+}
+
+@media (max-width: 700px){
+    .modal{
+        &__content {
+            width: 90%;  
+            height: 40vh;          
+            margin-top: 50%;
+            font-size: 3vw;
+        }
+
+        &__body{
+            height: 60%;
+        }
+        
+        &__footer{
+            height: 10%;
+        }
+
+        .pay {
+            height: 20vh;
+        }
+
+        .pay &__body {
+            height: 5vh;
+        }
+
+        
+    }
 }
