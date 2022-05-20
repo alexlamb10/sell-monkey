@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CheckoutForm from "./CheckoutForm";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
@@ -9,50 +9,57 @@ import { PayModalHeader, PayModalBody, PayModalFooter } from "./modal/PayModal";
 function CompletePayModal({ setShowModal, showModal, total, ids }) {
   const elements = useElements();
   const stripe = useStripe();
+  const [paid, setPaid] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements) {
+    if (paid === true) {
       return;
-    }
-    const clientSecretResponse = await axios.post("/create-payment-intent", {
-      total,
-    });
-
-    const clientSecret = clientSecretResponse.data.client_secret;
-
-    const cardElement = elements.getElement(CardElement);
-    console.log({ clientSecretResponse, clientSecret });
-    console.log("card", cardElement);
-    console.log("stripe", stripe);
-
-    const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
-    });
-
-    console.log("payment intent", paymentIntent);
-
-    if (paymentIntent === undefined) {
-      alert("Sorry, we were unable to process your payment.");
-    } else if (paymentIntent.status === "succeeded") {
-      // Update item as purchased
-      ids.forEach((id) => {
-        let {item_id} = id
-        axios.put(`/itemBought/${item_id}`);
+    } else if (paid === false) {
+      setPaid(true)
+      if (!stripe || !elements) {
+        return;
+      }
+      const clientSecretResponse = await axios.post("/create-payment-intent", {
+        total,
       });
 
-      ids.forEach((id) => {
-        let {item_id} = id
-        axios.delete(`/deleteBought/${item_id}`);
+      const clientSecret = clientSecretResponse.data.client_secret;
+
+      const cardElement = elements.getElement(CardElement);
+      console.log({ clientSecretResponse, clientSecret });
+      console.log("card", cardElement);
+      console.log("stripe", stripe);
+
+      const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
       });
 
-      alert(`Your payment for $${total} was successful.`);
+      console.log("payment intent", paymentIntent);
+
+      if (paymentIntent === undefined) {
+        alert("Sorry, we were unable to process your payment.");
+      } else if (paymentIntent.status === "succeeded") {
+        // Update item as purchased
+        ids.forEach((id) => {
+          let { item_id } = id;
+          axios.put(`/itemBought/${item_id}`);
+        });
+
+        ids.forEach((id) => {
+          let { item_id } = id;
+          axios.delete(`/deleteBought/${item_id}`);
+        });
+
+        alert(`Your payment for $${total} was successful.`);
+      }
+      setPaid(false)
+      setShowModal(false);
+      window.location.href = "/";
     }
-    setShowModal(false);
-    window.location.href = '/'
   };
 
   return (
@@ -68,7 +75,9 @@ function CompletePayModal({ setShowModal, showModal, total, ids }) {
           </p>
         </PayModalBody>
         <PayModalFooter>
-          <PayButton onClick={handleSubmit}>Pay</PayButton>
+          <PayButton paid={paid} onClick={handleSubmit}>
+            Pay
+          </PayButton>
         </PayModalFooter>
       </PayModal>
     </div>

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn{
@@ -73,8 +74,7 @@
 }
 
 .landing-page-company{
-  max-width: 30%;
-  max-height: 40%;
+  width: 25%;
   margin-right: 5%;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,7 @@
 }
 
 .landing-page-info{
-  max-width: 40%;
+  width: 40%;
   text-align: center;
   height: 20vh;
   margin-top: 10%;
@@ -96,6 +96,7 @@
 
 .landing-page-company h1 {
   color: #08bbfd;
+  font-size: 2vw;
 }
 
 .landing-page-company img {
@@ -104,7 +105,7 @@
 
 .main-auth{
   font-size: 1vw;
-  margin-top: 1vw;
+  margin-top: 1vh;
   font-weight: bold;
 }
 
@@ -123,6 +124,11 @@
 
 .auth{
   padding: 0.25rem 0.5rem;
+  font-size: 1vw;
+}
+
+.landing-page-info p {
+  font-size: 1vw;
 }
 
 
@@ -135,20 +141,30 @@
   .landing-page {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
   }
 
-  .landing-page-company{
-    margin: 5% 0 0 0;
-    font-size: 2.5vw;
-    width: 100%;
+  .landing-page-info {
+    height: 60%;
   }
 
+  .landing-page-company{
+    margin: 0;
+    font-size: 2.5vw;
+    width: 80%;
+    height: 40%;
+  }
+
+  .landing-page-company img {
+    width: 50%;
+  }
+
+
   .landing-page-info{
-    margin: 0 0 5% 0;
     color: #08bbfd;
+    width: 60%;
   }
 
   .btn {
@@ -172,4 +188,17 @@
   li button{
     margin-left: 10%;
   }
+
+  .landing-page-company h1{
+    font-size: 1.3rem;
+  }
+
+  .landing-page-info p {
+    font-size: .75rem;
+  }
+
+  .main-auth {
+    font-size: 2.5vw;
+  }
+
 }

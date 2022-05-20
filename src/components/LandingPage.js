@@ -20,9 +20,7 @@ function LandingPage() {
 
       <div className="landing-page-info">
         <p>
-          A great place to sell anything that you no longer want or need, as
-          well as buy items from other users. It's an easy way to buy and sell
-          without a subscription.
+          Find great deals on cars, electronics, and more! <br /> <br /> OR <br /> <br /> Just list your items and get cash fast!
         </p>
         <button className="btn main-auth" onClick={() => loginWithRedirect()}>
           Begin your experience!
