@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Sell Monkey
+## About the application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an application similar to an application like Facebook Marketplace. This is a space where users can log in to buy items listed by other users. Or they can list items they no longer have use for online for someone else to buy.
 
-## Available Scripts
+### Landing Page
 
-In the project directory, you can run:
+The application opens to a landing page. This is the only page a user can see until they have logged in. If a user attempts to go to a different page it redirects them back to this page.
 
-### `npm start`
+![Sell Monkey Landing Page](/screenshots/HomePage.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Logging in
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This application enables users to securely log in using Auth0. This allows the user to choose between two (2) options. They can either log in with their email account, which gives auth0 access to their email, username, and any other profile information. Their other choice is to create an account using their email and password. 
 
-### `npm test`
+### Home Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once the user has successfully logged in they will see this page, it shows each of the items that are currently listed for sale by all users on the site. Here they are able to use the filter functionality to filter by what category the items fall under (ie sporting goods, home decor, etc). They can also add an item they are interested in to their cart which will be stored in a database until the item is purchased.
 
-### `npm run build`
+![Sell Monkey Home Page](/screenshots/All-Items.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Your Listings Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Users can navigate to the Your listings page. On the page you are able to view all of the items that you have listed for sale, that have not been purchased. You can choose to delete the items, if this is done they will no longer show up on the home page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Sell Monkey Listings Page](/screenshots/YourListings.png)
 
-### `npm run eject`
+When a user clicks the button "Add Item for sale" a modal pops up to requesting information from the user regarding the item they want to sell. Once they have filled out the modal's form, they press the "Add Item" button and there is an alert giving confirmation the request was successful.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Add Item Modal](/screenshots/AddModal.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+*To enable users to upload pictures I used AWS S3. I am currently on the free tier, this makes it so the picture size has to be very small to work. The size must be a maximum of 75KB, if it is larger than that nothing will happen*
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Cart Page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+When a user navigates to the Cart Page the items the user has added to their cart are pulled from the database and displayed on the screen. The user can usee the information about the items, as well as a button to remove the item from their cart. On the right side of the screen the cart total is shown as well as a "Pay" button.
 
-## Learn More
+![Cart](/screenshots/Cart.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+When clicked a modal pops up to request credit card information. After the card information is entered you will see a visual showing what type of card is being used (visa, mastercard, etc). At this point you can click the "Pay" button on the modal. At this point if the card is processed successfully, an alert will be shown saying your payment for $xx.xx was processed. If there is an issue with processing payment an alert will notify you as well.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![PayModal](/screenshots/PayModal.png)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*For card processing I implemented Stripe. This is not a fully active implementation of stripe, it is in testing at this time. This means that you are only able to use the test cards provided by Stripe. These cards can be found at https://stripe.com/docs/testing*
