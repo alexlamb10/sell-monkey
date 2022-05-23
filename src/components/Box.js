@@ -57,11 +57,15 @@ function Box({ userId }) {
                 <h3>{item.product_name}</h3>
               </div>
               <div className="box-info-div">
-                <p>{item.price}</p>
+                <p>${item.price}</p>
                 <p>{item.description}</p>
                 <p>{item.shipping}</p>
                 <p>{item.category}</p>
-                <button className="btn" value={item.item_id} onClick={deleteListing}>
+                <button
+                  className="btn"
+                  value={item.item_id}
+                  onClick={deleteListing}
+                >
                   Delete
                 </button>
               </div>

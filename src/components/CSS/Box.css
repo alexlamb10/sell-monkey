@@ -6,7 +6,7 @@ h1 {
 .listing{
     min-width: 50%;
     max-width: 50%;
-    height: 30vh;
+    min-height: 50vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -31,6 +31,12 @@ h1 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    text-align: center;
+}
+
+.box-info-div p {
+    width: 90%;
+    margin: 3% 0;
 }
 
 .all-listings-page{
@@ -65,7 +71,7 @@ h1 {
 .single-listing-home{
     min-width: 25%;
     width: 30%;
-    min-height: 35vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,10 +79,13 @@ h1 {
     border-left: thin solid rgb(29, 92, 175);
     border-right: thin solid rgb(29, 92, 175);
     margin: 2.5% 1%;
+    text-align: center;
 }
 
 .single-listing-home p {
     font-size: 1vw;
+    width: 90%;
+    margin: 3%;
 }
 
 .single-listing-home h3 {
@@ -85,11 +94,12 @@ h1 {
 
 .single-listing-home button {
     font-size: 1vw;
+    width: 80%;
 }
 
 
 .item-pic{
-    width: 50%;
+    max-width: 40%;
 }
 
 .box-item-pic {
@@ -117,6 +127,15 @@ h1 {
 }
 
 @media screen and (max-width: 700px) {
+
+    .box-item-div h3 {
+        font-size: 3vw;
+    }
+
+    .box-info-div p, .box-info-div button {
+        font-size: 2vw;
+    }
+
     .single-listing-home{
         width: 80%;
         margin: 4% 0;
