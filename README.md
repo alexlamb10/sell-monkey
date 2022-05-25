@@ -42,3 +42,5 @@ When clicked a modal pops up to request credit card information. After the card 
 ![PayModal](/screenshots/PayModal.png)
 
 *For card processing I implemented Stripe. This is not a fully active implementation of stripe, it is in testing at this time. This means that you are only able to use the test cards provided by Stripe. These cards can be found at https://stripe.com/docs/testing*
+
+Application has been deployed to heroku. https://sell-monkey.herokuapp.com/
