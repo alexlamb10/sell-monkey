@@ -6,6 +6,7 @@ import axios from "axios";
 import AddListing from "./button/AddListing";
 
 function CompleteModal({ setShowModal, showModal }) {
+  const baseURL = ''
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -53,7 +54,7 @@ function CompleteModal({ setShowModal, showModal }) {
       };
 
       await axios
-        .post("/addNewListing", newListing)
+        .post(`${baseURL}/addNewListing`, newListing)
         .then((res) => {
           alert(res.data);
         })

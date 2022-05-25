@@ -3,16 +3,16 @@ const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
 const PORT = process.env.PORT || 3050;
-const { AWS_ACCESS_KEY_PUBLIC, AWS_ACCESS_KEY_PRIVATE, AWS_REGION, S3_BUCKET } =
+const { ACCESS_KEY_PUBLIC, ACCESS_KEY_PRIVATE, REGION, S3_BUCKET } =
   process.env;
 
 const AWS = require("aws-sdk");
 // const S3 = require('aws-sdk/clients/s3')
 
 AWS.config.update({
-  accessKeyId: AWS_ACCESS_KEY_PUBLIC,
-  secretAccessKey: AWS_ACCESS_KEY_PRIVATE,
-  region: AWS_REGION,
+  accessKeyId: ACCESS_KEY_PUBLIC,
+  secretAccessKey: ACCESS_KEY_PRIVATE,
+  region: REGION,
 });
 const S3 = new AWS.S3();
 

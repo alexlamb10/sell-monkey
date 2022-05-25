@@ -10,6 +10,7 @@ function CompletePayModal({ setShowModal, showModal, total, ids }) {
   const elements = useElements();
   const stripe = useStripe();
   const [paid, setPaid] = useState(false);
+  const baseURL = ''
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ function CompletePayModal({ setShowModal, showModal, total, ids }) {
       if (!stripe || !elements) {
         return;
       }
-      const clientSecretResponse = await axios.post("/create-payment-intent", {
+      const clientSecretResponse = await axios.post(`${baseURL}/create-payment-intent`, {
         total,
       });
 
@@ -46,12 +47,12 @@ function CompletePayModal({ setShowModal, showModal, total, ids }) {
         // Update item as purchased
         ids.forEach((id) => {
           let { item_id } = id;
-          axios.put(`/itemBought/${item_id}`);
+          axios.put(`${baseURL}/itemBought/${item_id}`);
         });
 
         ids.forEach((id) => {
           let { item_id } = id;
-          axios.delete(`/deleteBought/${item_id}`);
+          axios.delete(`${baseURL}/deleteBought/${item_id}`);
         });
 
         alert(`Your payment for $${total} was successful.`);

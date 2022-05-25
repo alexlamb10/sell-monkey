@@ -10,12 +10,13 @@ function Shop() {
   const [cat, setCat] = useState("");
   const [tempCat, setTempCat] = useState("");
   const { user } = useAuth0();
+  const baseURL = "";
 
   useEffect(() => {
     // If the category is empty return all the listings
     if (cat === "") {
       axios
-        .get(`/listings`)
+        .get(`${baseURL}/listings`)
         .then((res) => {
           setListings(res.data);
         })
@@ -25,7 +26,7 @@ function Shop() {
     } else {
       // If category is not empty only return listings for that category
       axios
-        .get(`/getFilteredListings/${cat}`)
+        .get(`${baseURL}/getFilteredListings/${cat}`)
         .then((res) => {
           setListings(res.data);
         })
@@ -46,7 +47,7 @@ function Shop() {
     let id = user?.sub?.split("|")[1];
 
     axios
-      .post("/addToCart", { item: item, id: id })
+      .post(`${baseURL}/addToCart`, { item: item, id: id })
       .then((res) => {
         alert(res.data);
       })
@@ -73,7 +74,6 @@ function Shop() {
         {listings.map((item) => {
           return (
             <div key={item.item_id} className="single-listing-home">
-              
               <img src={item.picture} alt="item" className="item-pic" />
               <h3>{item.product_name}</h3>
               <p>Description: {item.description}</p>

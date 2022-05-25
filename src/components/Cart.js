@@ -10,22 +10,23 @@ import CompletePayModal from "./CompletePayModal";
 function Cart() {
   const { isAuthenticated, user, isLoading } = useAuth0();
   const [price, setPrice] = useState([]);
-  const [ids, setIds] = useState([])
+  const [ids, setIds] = useState([]);
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   let id = user?.sub?.split("|")[1];
+  const baseURL = ''
 
   let arr = [];
   let priceArr = [];
   async function fetchData() {
     // Get ids for all the items in the cart_items table
-    const res = await axios.get(`/getIds/${id}`);
-    setIds(res.data)
+    const res = await axios.get(`${baseURL}/getIds/${id}`);
+    setIds(res.data);
 
     // Get the item info from ids received above
     for (let i = 0; i < res.data.length; i++) {
       let id = res.data[i]["item_id"];
-      const results = await axios.get(`/getCartItem/${id}`);
+      const results = await axios.get(`${baseURL}/getCartItem/${id}`);
       arr.push(results.data[0]);
       priceArr.push(results.data[0].price);
     }
@@ -41,7 +42,7 @@ function Cart() {
 
   async function deleteCartItem(e) {
     let id = e.target.value;
-    await axios.delete(`/deleteCartItem/${id}`).then((res) => {
+    await axios.delete(`${baseURL}/deleteCartItem/${id}`).then((res) => {
       alert(res.data);
     });
     await fetchData();
@@ -78,7 +79,7 @@ function Cart() {
                       <p>{item.product_name}</p>
                     </div>
                     <div className="cart-description">
-                      <p>{item.price}</p>
+                      <p>${item.price}</p>
                       <p>{item.description}</p>
                       <p>{item.shipping}</p>
                       <button

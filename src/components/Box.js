@@ -6,11 +6,12 @@ import "./CSS/Box.css";
 function Box({ userId }) {
   const [listings, setListings] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const baseURL = ''
 
   useEffect(() => {
     // Get items that are active by the user
     axios
-      .get(`/getListings/${userId}`)
+      .get(`${baseURL}/getListings/${userId}`)
       .then((res) => {
         console.log(res.data);
         setListings(res.data);
@@ -23,12 +24,12 @@ function Box({ userId }) {
   async function deleteListing(e) {
     //Delete the item that is clicked
     let id = e.target.value;
-    await axios.delete(`/deleteListing/${id}`).then((res) => {
+    await axios.delete(`${baseURL}/deleteListing/${id}`).then((res) => {
       alert(res.data);
     });
     // Re-render listings that are active
     await axios
-      .get(`/getListings/${userId}`)
+      .get(`${baseURL}/getListings/${userId}`)
       .then((res) => {
         setListings(res.data);
       })
