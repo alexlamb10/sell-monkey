@@ -2,26 +2,33 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CompleteModal from "./CompleteModal";
 import "./CSS/Box.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Box({ userId }) {
+function Box() {
   const [listings, setListings] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const baseURL = ''
+  const baseURL = "";
+  const { user } = useAuth0();
 
   useEffect(() => {
+    let userId = user?.sub?.split("|")[1];
     // Get items that are active by the user
-    axios
-      .get(`${baseURL}/getListings/${userId}`)
-      .then((res) => {
-        console.log(res.data);
-        setListings(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userId, showModal]);
+    function getItems() {
+      axios
+        .get(`${baseURL}/getListings/${userId}`)
+        .then((res) => {
+          console.log(res.data);
+          setListings(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    getItems();
+  }, [showModal, user?.sub]);
 
   async function deleteListing(e) {
+    let userId = user?.sub?.split("|")[1];
     //Delete the item that is clicked
     let id = e.target.value;
     await axios.delete(`${baseURL}/deleteListing/${id}`).then((res) => {

@@ -26,7 +26,7 @@ function Listings() {
       <div>
         <NavBar />
         <div className="pages listings-page">
-          <Box userId={userId} />
+          <Box />
         </div>
         <Footer />
       </div>

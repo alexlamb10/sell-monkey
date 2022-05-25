@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(cors());
 
 // For Heroku
-app.use(express.static(path.resolve(__dirname, "../build")));
+// app.use(express.static(path.resolve(__dirname, "../build")));
 
 app.post("/api/s3", (req, res) => {
   const photo = req.body;
@@ -98,9 +98,9 @@ app.put('/itemBought/:id', markAsComplete)
 app.delete('/deleteBought/:id', deletePurchased)
 
 // After all Endpoints
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../build", "index.html"));
-});
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../build", "index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`server is listening on port ${PORT}`);
